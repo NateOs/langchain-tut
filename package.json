@@ -29,10 +29,12 @@
     "dev": "ts-node --esm ./src/app.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "github:supabase/supabase-js",
     "@types/node": "^20.12.11",
     "dotenv": "^16.4.5",
     "langchain": "^0.1.36",
     "openai": "^4.43.0",
+    "supabase": "^1.165.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
