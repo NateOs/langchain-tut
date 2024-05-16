@@ -26,18 +26,21 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./dist/app.js",
-    "dev": "ts-node --esm ./src/app.ts"
+    "dev": "ts-node --esm ./src/app.ts",
+    "watch": "npm run build && nodemon --exec 'npm start' --watch ./src"
   },
   "dependencies": {
-    "@supabase/supabase-js": "github:supabase/supabase-js",
+    "@langchain/community": "^0.0.57",
+    "@langchain/openai": "^0.0.31",
+    "@supabase/supabase-js": "2.36.0",
     "@types/node": "^20.12.11",
     "dotenv": "^16.4.5",
-    "langchain": "^0.1.36",
+    "langchain": "^0.1.37",
     "openai": "^4.43.0",
-    "supabase": "^1.165.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "supabase": "^1.165.0",
     "ts-node": "^10.9.2"
   }
 }
