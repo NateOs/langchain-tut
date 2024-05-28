@@ -16,7 +16,6 @@ async function readFile(relativeFilePath) {
             chunkOverlap: 50, // 10% of chunk size is good rule of thumb
         });
         const output = await splitter.createDocuments([text]);
-        console.log(output);
         const supabaseProjectUrl = process.env.SUPABASE_URL_LC_CHATBOT;
         const supabaseApiKey = process.env.SUPABASE_API_KEY;
         const openAIKey = process.env.OPENAI_API_KEY;
@@ -25,7 +24,7 @@ async function readFile(relativeFilePath) {
         const embeddings = new OpenAIEmbeddings({
             apiKey: openAIKey,
             batchSize: 512,
-            model: "text-embedding-3-large",
+            model: "text-embedding-3-small",
         });
         // save embeddings to database
         await SupabaseVectorStore.fromDocuments(output, embeddings, {
@@ -33,6 +32,7 @@ async function readFile(relativeFilePath) {
                 createClient(supabaseProjectUrl, supabaseApiKey),
             tableName: "documents",
         });
+        console.log('successfully saved');
     }
     catch (error) {
         console.error(error);

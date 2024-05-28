@@ -30,8 +30,9 @@ async function readFile(relativeFilePath: string): Promise<void> {
     const embeddings = new OpenAIEmbeddings({
       apiKey: openAIKey,
       batchSize: 512,
-      model: "text-embedding-3-large",
-    });
+      model: "text-embedding-3-small",
+    }
+    );
 
     // save embeddings to database
     await SupabaseVectorStore.fromDocuments(output, embeddings, {
@@ -40,6 +41,7 @@ async function readFile(relativeFilePath: string): Promise<void> {
         createClient(supabaseProjectUrl as string, supabaseApiKey as string),
       tableName: "documents",
     });
+    
   } catch (error) {
     console.error(error);
   }
